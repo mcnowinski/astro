@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!--focusStars--><!--
+--><catalog>
+	<target name="H9105" dec="+42:05:32" epoch="2000.0" link="" magn="6.01" alias="Focus00RA" ra="00:04:36.7" type="star"/>
+	<target name="H0283" dec="+44:42:48" epoch="2000.0" link="" magn="6.04" alias="Focus01RA" ra="01:00:03.6" type="star"/>
+	<target name="H0556" dec="+37:16:40" epoch="2000.0" link="" magn="5.89" alias="Focus02RA" ra="01:55:54.4" type="star"/>
+	<target name="H0894" dec="+38:07:54" epoch="2000.0" link="" magn="6.11" alias="Focus03RA" ra="03:00:11.8" type="star"/>
+	<target name="H1277" dec="+37:43:40" epoch="2000.0" link="" magn="6.09" alias="Focus04RA" ra="04:08:15.3" type="star"/>
+	<target name="H1599" dec="+39:23:41" epoch="2000.0" link="" magn="5.95" alias="Focus05RA" ra="05:00:18.3" type="star"/>
+	<target name="H2110" dec="+31:02:05" epoch="2000.0" link="" magn="5.98" alias="Focus06RA" ra="06:01:10.2" type="star"/>
+	<target name="H2600" dec="+38:03:08" epoch="2000.0" link="" magn="6.00" alias="Focus07RA" ra="06:59:02.8" type="star"/>
+	<target name="H3040" dec="+33:14:01" epoch="2000.0" link="" magn="6.03" alias="Focus08RA" ra="07:51:02.3" type="star"/>
+	<target name="H3587" dec="+32:15:09" epoch="2000.0" link="" magn="5.82" alias="Focus09RA" ra="09:01:24.1" type="star"/>
+	<target name="H3857" dec="+35:05:36" epoch="2000.0" link="" magn="6.14" alias="Focus10RA" ra="09:42:42.7" type="star"/>
+	<target name="H4285" dec="+42:54:41" epoch="2000.0" link="" magn="6.02" alias="Focus11RA" ra="11:00:20.6" type="star"/>
+	<target name="H4581" dec="+33:10:03" epoch="2000.0" link="" magn="5.96" alias="Focus12RA" ra="11:59:17.6" type="star"/>
+	<target name="H4919" dec="+46:10:37" epoch="2000.0" link="" magn="6.12" alias="Focus13RA" ra="12:57:07.7" type="star"/>
+	<target name="H5229" dec="+28:38:53" epoch="2000.0" link="" magn="5.90" alias="Focus14RA" ra="13:53:10.3" type="star"/>
+	<target name="H5569" dec="+32:18:01" epoch="2000.0" link="" magn="6.12" alias="Focus15RA" ra="14:55:58.7" type="star"/>
+	<target name="H5983" dec="+36:37:54" epoch="2000.0" link="" magn="5.83" alias="Focus16RA" ra="16:03:19.4" type="star"/>
+	<target name="H6351" dec="+34:47:25" epoch="2000.0" link="" magn="6.04" alias="Focus17RA" ra="17:03:53.5" type="star"/>
+	<target name="H6726" dec="+33:12:50" epoch="2000.0" link="" magn="5.99" alias="Focus18RA" ra="18:00:36.4" type="star"/>
+	<target name="H7204" dec="+33:48:08" epoch="2000.0" link="" magn="6.01" alias="Focus19RA" ra="19:00:55.2" type="star"/>
+	<target name="H7646" dec="+45:46:20" epoch="2000.0" link="" magn="5.92" alias="Focus20RA" ra="19:59:20.5" type="star"/>
+	<target name="H8051" dec="+36:01:34" epoch="2000.0" link="" magn="5.97" alias="Focus21RA" ra="21:01:12.9" type="star"/>
+	<target name="H8429" dec="+45:14:55" epoch="2000.0" link="" magn="6.19" alias="Focus22RA" ra="22:06:12.4" type="star"/>
+	<target name="H8733" dec="+39:18:32" epoch="2000.0" link="" magn="6.18" alias="Focus22RA" ra="22:57:40.7" type="star"/>
+</catalog>
