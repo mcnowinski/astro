@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/com.astrofizzbizz.emailtextfile.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/mailapi-1.4.4.jar"/>
+	<classpathentry kind="lib" path="lib/se.esss.litterbox.utilities.jar"/>
+	<classpathentry kind="lib" path="lib/simple-java-mail-v2.1.jar"/>
+	<classpathentry kind="lib" path="lib/smtp-1.4.4.jar"/>
+	<classpathentry kind="lib" path="lib/jsch-0.1.53.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
