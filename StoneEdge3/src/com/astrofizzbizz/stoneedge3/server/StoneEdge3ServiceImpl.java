@@ -94,13 +94,13 @@ public class StoneEdge3ServiceImpl extends RemoteServiceServlet implements Stone
 			BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
 			String inputLine = in.readLine();
 			int ii = 1;
-			while ((inputLine != null) && ii < 9) 
+			while ((inputLine != null) && ii < 8) 
 			{
 				inputLine = in.readLine();
 				ii = ii  + 1;
 			}
 			in.close();	
-			if (ii < 9 )
+			if (ii < 8 )
 			{
 				simbadReturnInfo.setRaString(null);
 				simbadReturnInfo.setDecString(null);

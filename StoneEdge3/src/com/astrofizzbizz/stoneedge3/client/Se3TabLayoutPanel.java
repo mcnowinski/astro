@@ -73,13 +73,13 @@ public class Se3TabLayoutPanel extends TabLayoutPanel
 	    add(stoneEdge3.obsCommandBuffer.getObsCommandBufferMainPanel(),"Command Buffer");
 	    obsCommandBufferPanelTabId = 5;
 
-	    obsCommandPanel = new ObsCommandPanel(stoneEdge3);
-	    add(obsCommandPanel, "Command");
-	    obsCommandPanelTabId = 6;
+//	    obsCommandPanel = new ObsCommandPanel(stoneEdge3);
+//	    add(obsCommandPanel, "Command");
+//	    obsCommandPanelTabId = 6;
 	    
 	    infoPanel = new InfoPanel(stoneEdge3);
 	    add(infoPanel,"Info");
-	    infoPanelTabId = 7;
+	    infoPanelTabId = 6;
 
 	    addSelectionHandler(new Se3TabLayoutPanelSelectionHandler(this));
 	    	    

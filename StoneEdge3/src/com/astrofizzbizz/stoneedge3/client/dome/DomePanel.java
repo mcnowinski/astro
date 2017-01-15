@@ -17,10 +17,10 @@ public class DomePanel extends Se3TabLayoutScrollPanel
 		}
 		else
 		{
-			cameraLink = "http://localhost:8082/";
+			cameraLink = "http://localhost:8082/mjpg/video.mjpg";
 		}
 		Frame cameraFrame = new Frame(cameraLink);
-		cameraFrame.setSize(850 + "px", 850 + "px");
+		cameraFrame.setSize(2048 + "px", 1152 + "px");
 		add(cameraFrame);
 
 	}

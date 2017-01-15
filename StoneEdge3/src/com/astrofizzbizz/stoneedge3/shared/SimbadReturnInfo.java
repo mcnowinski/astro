@@ -2,7 +2,6 @@ package com.astrofizzbizz.stoneedge3.shared;
 
 import java.io.Serializable;
 
-
 @SuppressWarnings("serial")
 public class SimbadReturnInfo  implements Serializable
 {

@@ -19,9 +19,9 @@ import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 public class StoneEdge3 implements EntryPoint 
 {
-	boolean debug = true;
-	String version = "v1.4";
-	String versionDate = "June 13, 2014";
+	boolean debug = false;
+	String version = "v1.5";
+	String versionDate = "January 15, 2017";
 	int statusintervalSeconds = 60;
 	int trackingintervalSeconds = 180;
 	int commandBufferDelayMilliSec = 200;
