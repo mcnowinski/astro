@@ -1,0 +1,37 @@
+/** Add css rules here for your application. */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+.titleLabel {
+  display: block;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
+}
+.RootPanel {
+	color: #FFFFFF;
+	background-color: #0095CD;
+}
+.skelTab {
+	background-color: #FFFFFF;
+	color: #0095CD;
+}
+@external gwt-TabLayoutPanelTabs;
+.gwt-TabLayoutPanelTabs {	
+	background-color: #0082B3 !important;
+}
+@external gwt-TabLayoutPanelTab;
+.gwt-TabLayoutPanelTab {
+   color: white  !important;
+   background: #0095CD !important;
+}
+@external gwt-TabLayoutPanelTab-selected;
+.gwt-TabLayoutPanelTab-selected {
+   color: #0095CD  !important;
+   background: white !important;
+}
+
