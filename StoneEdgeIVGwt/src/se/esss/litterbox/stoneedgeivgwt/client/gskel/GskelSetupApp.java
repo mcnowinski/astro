@@ -29,12 +29,14 @@ public class GskelSetupApp
 	private VerticalPanel mainVerticalPanel = new VerticalPanel();
 	private HorizontalPanel titlePanel = new HorizontalPanel();
 	private boolean tabbedLayout = false;
+	boolean debug = false;
 
 	private int gskelTabLayoutPanelHeightBarHeightPx = 30;
 
 
 // Getters
 	public boolean isMobile() {return mobile;}
+	public boolean isDebug() {return debug;}
 	public GskelOptionDialog getOptionDialog() {return optionDialog;}
 	public GskelMessageDialog getMessageDialog() {return messageDialog;}
 	public GskelFrameDialog getFrameDialog() {return frameDialog;}
@@ -45,6 +47,7 @@ public class GskelSetupApp
 	public HorizontalPanel getTitlePanel() {return titlePanel;}
 // Setters
 	public void setSettingsPermitted(boolean settingsPermitted) {this.settingsPermitted = settingsPermitted;}
+	public void setDebug(boolean debug) {this.debug = debug;}
 	
 	public GskelSetupApp(EntryPointApp entryPointApp, boolean tabbedLayout)
 	{

@@ -1,15 +1,11 @@
 package se.esss.litterbox.stoneedgeivgwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.Label;
 
 import se.esss.litterbox.stoneedgeivgwt.client.callbacks.CheckIpAddresslAsyncCallback;
-import se.esss.litterbox.stoneedgeivgwt.client.contentpanels.GaugeShowCasePanel;
-import se.esss.litterbox.stoneedgeivgwt.client.contentpanels.LineChartShowCasePanel;
-import se.esss.litterbox.stoneedgeivgwt.client.contentpanels.ScatterChartShowCasePanel;
-import se.esss.litterbox.stoneedgeivgwt.client.contentpanels.TestPicPanel;
-import se.esss.litterbox.stoneedgeivgwt.client.gskel.GskelLoadWaiter;
+import se.esss.litterbox.stoneedgeivgwt.client.contentpanels.DomeStatusPanel;
+import se.esss.litterbox.stoneedgeivgwt.client.contentpanels.SkyStatusPanel;
 import se.esss.litterbox.stoneedgeivgwt.client.gskel.GskelSetupApp;
 
 /**
@@ -25,9 +21,10 @@ public class EntryPointApp implements EntryPoint
 	public void onModuleLoad() 
 	{
 		setup = new GskelSetupApp(this, true);
+		setup.setDebug(false);
 		getSetup().setLogoImage("images/gwtLogo.jpg");
 		
-		Label titleLabel = new Label("GWT Skeleton");
+		Label titleLabel = new Label("StoneEdge IV v1.3");
 		titleLabel.setStyleName("titleLabel");
 		
 		getSetup().getTitlePanel().add(titleLabel);
@@ -36,39 +33,9 @@ public class EntryPointApp implements EntryPoint
 	}
 	public void initializeTabs()
 	{
-		TestPicPanel tpp1 = new TestPicPanel(false, this, "images/gwtLogo.jpg");
-		getSetup().addPanel(tpp1,"Shiftr");
-		new TabLoadWaiter(100, 1);
-	}
-	private void loadTab2()
-	{
-		getSetup().addPanel(new GaugeShowCasePanel(this), "Gauge");
-		new TabLoadWaiter(100, 2);
-	}
-	private void loadTab3()
-	{
-		getSetup().addPanel(new LineChartShowCasePanel(this), "Line");
-		new TabLoadWaiter(100, 3);
-	}
-	private void loadTab4()
-	{
-		getSetup().addPanel(new ScatterChartShowCasePanel(this), "Scatter");
-	}
-	class TabLoadWaiter extends GskelLoadWaiter
-	{
-		public TabLoadWaiter(int loopTimeMillis, int itask) {super(loopTimeMillis, itask);}
-		@Override
-		public boolean isLoaded() 
-		{
-			return true;
-		}
-		@Override
-		public void taskAfterLoad() 
-		{
-			GWT.log(Integer.toString(getItask()));
-			if (getItask() == 1) loadTab2();
-			if (getItask() == 2) loadTab3();
-			if (getItask() == 3) loadTab4();
-		}
+		DomeStatusPanel dsp = new DomeStatusPanel(this);
+		SkyStatusPanel ssp = new SkyStatusPanel(this);
+		getSetup().addPanel(dsp,"Dome Status");
+		getSetup().addPanel(ssp,"Sky Status");
 	}
 }

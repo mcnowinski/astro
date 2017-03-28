@@ -34,4 +34,23 @@ h1 {
    color: #0095CD  !important;
    background: white !important;
 }
-
+.lampButtonOnNotEnabled{
+	color: #888a85;
+	background-color: #ef2929;
+	font-size: 14pt;
+}
+.lampButtonOnEnabled{
+	color: #000000;
+	background-color: #ef2929;
+	font-size: 14pt;
+}
+.lampButtonOffNotEnabled{
+	color: #888a85;
+	background-color: #8ae234;
+	font-size: 14pt;
+}
+.lampButtonOffEnabled{
+	color: #000000;
+	background-color: #8ae234;
+	font-size: 14pt;
+}

@@ -50,8 +50,8 @@
           <http-method>POST</http-method>
       </web-resource-collection>
       <auth-constraint>
-          <role-name>stoneEdgeSettingsPermitted</role-name>
-          <role-name>stoneEdgeViewOnly</role-name>
+          <role-name>webAppSettingsPermitted</role-name>
+          <role-name>webAppViewOnly</role-name>
       </auth-constraint>
       <user-data-constraint>
           <transport-guarantee>NONE</transport-guarantee>

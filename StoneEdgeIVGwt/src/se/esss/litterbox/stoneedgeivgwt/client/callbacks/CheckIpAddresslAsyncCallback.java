@@ -48,6 +48,7 @@ public class CheckIpAddresslAsyncCallback implements AsyncCallback<String[]>
 			{
 				entryPointApp.getSetup().setSettingsPermitted(false);
 				cancel();
+				entryPointApp.initializeTabs();
 			}
 
 		}
