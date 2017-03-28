@@ -14,6 +14,7 @@ import se.esss.litterbox.icecube.ioc.IceCubePeriodicPollIoc;
 
 public class DomeCamIoc extends IceCubePeriodicPollIoc
 {
+	private long imageCounter = 0;
 	public DomeCamIoc(String clientId, String mqttBrokerInfoFilePath) throws Exception 
 	{
 		super(clientId, mqttBrokerInfoFilePath);
@@ -45,16 +46,19 @@ public class DomeCamIoc extends IceCubePeriodicPollIoc
 			baos.flush();
 			imageInByte = baos.toByteArray();
 			baos.close();
-			Thread.sleep(200);
-			String dateString = new Date().toString();	
 			boolean retained = true;
+			String dateString = new Date().toString();	
 			JSONObject outputData = new JSONObject();
 			outputData.put("date", dateString);
+			outputData.put("counter", Long.toString(imageCounter));
 			publishMessage("domeCam/image/date", outputData.toJSONString().getBytes(), 0, retained);
+			++imageCounter;
+			Thread.sleep(200);
+			return imageInByte;
 		}
 		catch (Exception e)
 		{System.out.println("Error: " + e.getMessage());}
-		return imageInByte;
+		return null;
 	}
 	@Override
 	public void handleBrokerMqttMessage(String topic, byte[] message) 

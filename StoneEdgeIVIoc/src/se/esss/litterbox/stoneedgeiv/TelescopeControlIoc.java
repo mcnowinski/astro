@@ -47,8 +47,21 @@ public class TelescopeControlIoc extends IceCubePeriodicPollIoc
 			outputData = new JSONObject();
 			outputData.put("filter", response);
 			publishMessage("tel/done/pfilter", outputData.toJSONString().getBytes(), 0, true);
-			response = this.runExternalProcess("tin", true, true)[0];
-			publishResponse(response, "tel/done/tin");
+//			response = this.runExternalProcess("tin", true, true)[0];
+//			publishResponse(response, "tel/done/tin");
+			response = this.runExternalProcess("tx temps", true, true)[0];
+			publishResponse(response, "tel/done/tx/temps");
+			response = this.runExternalProcess("tx taux", true, true)[0];
+			publishResponse(response, "tel/done/tx/taux");
+			response = this.runExternalProcess("tx mets", true, true)[0];
+			publishResponse(response, "tel/done/tx/mets");
+
+			outputData = new JSONObject();
+			response = this.runExternalProcess("sun", true, true)[0];
+			outputData.put("sun", response);
+			response = this.runExternalProcess("moon", true, true)[0];
+			outputData.put("moon", response);
+			publishMessage("tel/done/sun", outputData.toJSONString().getBytes(), 0, true);
 		}
 		catch (Exception e)
 		{
