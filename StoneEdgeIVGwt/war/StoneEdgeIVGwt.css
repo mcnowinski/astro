@@ -54,3 +54,24 @@ h1 {
 	background-color: #8ae234;
 	font-size: 14pt;
 }
+.lockButtonOnNotEnabled{
+	color: #888a85;
+	background-color: #ef2929;
+	font-size: 14pt;
+}
+.lockButtonOnEnabled{
+	color: #000000;
+	background-color: #ef2929;
+	font-size: 14pt;
+}
+.lockButtonOffNotEnabled{
+	color: #888a85;
+	background-color: #8ae234;
+	font-size: 14pt;
+}
+.lockButtonOffEnabled{
+	color: #000000;
+	background-color: #8ae234;
+	font-size: 14pt;
+}
+

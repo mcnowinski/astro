@@ -1,5 +1,6 @@
 package se.esss.litterbox.stoneedgeivgwt.client.contentpanels;
 
+
 import com.google.gwt.user.client.ui.CaptionPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -27,6 +28,10 @@ public class SkyStatusPanel extends GskelVerticalPanel
 	Label barLabel = new Label();
 	Label sunLabel = new Label();
 	Label rainfallLabel = new Label();
+	Label sunAltLabel = new Label();
+	Label moonAltLabel = new Label();
+	Label moonPhaseLabel = new Label();
+	Label lunationLabel = new Label();
 	
 
 	public SkyStatusPanel( EntryPointApp entryPointApp) 
@@ -90,12 +95,25 @@ public class SkyStatusPanel extends GskelVerticalPanel
 		CaptionPanel mets2CaptionPanel = new CaptionPanel("Mets2");
 		mets2CaptionPanel.add(mets2Grid);
 		
+		Grid sunGrid = new Grid(4,2);
+		sunGrid.setWidget(0, 0, new Label("Sun Alt."));
+		sunGrid.setWidget(1, 0, new Label("Moon Alt."));
+		sunGrid.setWidget(2, 0, new Label("Moon Phase"));
+		sunGrid.setWidget(3, 0, new Label("Lunation"));
+		sunGrid.setWidget(0, 1, sunAltLabel);
+		sunGrid.setWidget(1, 1, moonAltLabel);
+		sunGrid.setWidget(2, 1, moonPhaseLabel);
+		sunGrid.setWidget(3, 1, lunationLabel);
+		CaptionPanel sunCaptionPanel = new CaptionPanel("Sun & Moon");
+		sunCaptionPanel.add(sunGrid);
+		
 		HorizontalPanel statusPanel = new HorizontalPanel();
 		statusPanel.add(tempsCaptionPanel);
 		statusPanel.add(taux1CaptionPanel);
 		statusPanel.add(taux2CaptionPanel);
 		statusPanel.add(mets1CaptionPanel);
 		statusPanel.add(mets2CaptionPanel);
+		statusPanel.add(sunCaptionPanel);
 		CaptionPanel statusCaptionPanel = new CaptionPanel("Status");
 		statusCaptionPanel.add(statusPanel);
 		
@@ -104,6 +122,7 @@ public class SkyStatusPanel extends GskelVerticalPanel
 		new TempsMqttData(entryPointApp);
 		new TauxMqttData(entryPointApp);
 		new MetsMqttData(entryPointApp);
+		new SunMqttData(entryPointApp);
 	}
 	class TempsMqttData extends MqttData
 	{
@@ -161,6 +180,45 @@ public class SkyStatusPanel extends GskelVerticalPanel
 				barLabel.setText(getJsonValue("bar"));
 				sunLabel.setText(getJsonValue("sun"));
 				rainfallLabel.setText(getJsonValue("rainfall"));
+			} catch (Exception e) {}
+			
+		}
+	}
+	class SunMqttData extends MqttData
+	{
+		public SunMqttData(EntryPointApp entryPointApp) 
+		{
+			super("tel/done/sun", MqttData.JSONDATA, 1000, entryPointApp);
+		}
+		@Override
+		public void doSomethingWithData() 
+		{
+			try 
+			{
+				String moonString = getJsonValue("moon");
+				String[] parsedString = moonString.split(" ");
+
+				for (int ii = 0; ii < parsedString.length; ++ii)
+				{
+					int equalPos = parsedString[ii].indexOf("=");
+					if (equalPos > 0)
+					{
+						if (parsedString[ii].indexOf("alt=") >= 0) moonAltLabel.setText(parsedString[ii].substring(equalPos + 1));
+						if (parsedString[ii].indexOf("phase=") >= 0) moonPhaseLabel.setText(parsedString[ii].substring(equalPos + 1));
+						if (parsedString[ii].indexOf("lunation=") >= 0) lunationLabel.setText(parsedString[ii].substring(equalPos + 1));
+					}
+				}
+				String sunString = getJsonValue("sun");
+				parsedString = sunString.split(" ");
+
+				for (int ii = 0; ii < parsedString.length; ++ii)
+				{
+					int equalPos = parsedString[ii].indexOf("=");
+					if (equalPos > 0)
+					{
+						if (parsedString[ii].indexOf("alt=") >= 0) sunAltLabel.setText(parsedString[ii].substring(equalPos + 1));
+					}
+				}
 			} catch (Exception e) {}
 			
 		}

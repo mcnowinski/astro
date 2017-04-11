@@ -42,7 +42,7 @@ public class MqttServiceImpl extends RemoteServiceServlet implements MqttService
 	int domeImageCounterArrayIndex = -1;
 	MqttServiceImpClient mqttClient;
 	
-	boolean updateDomeCamImage = true;
+	boolean updateDomeCamImage = false;
 
 	public void init()
 	{

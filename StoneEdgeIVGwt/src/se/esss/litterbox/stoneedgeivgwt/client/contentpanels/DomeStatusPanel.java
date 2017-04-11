@@ -1,28 +1,17 @@
 package se.esss.litterbox.stoneedgeivgwt.client.contentpanels;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CaptionPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 import se.esss.litterbox.stoneedgeivgwt.client.EntryPointApp;
-import se.esss.litterbox.stoneedgeivgwt.client.gskel.GskelSettingButtonGrid;
-import se.esss.litterbox.stoneedgeivgwt.client.gskel.GskelVerticalPanel;
 import se.esss.litterbox.stoneedgeivgwt.client.mqttdata.MqttData;
 
-public class DomeStatusPanel extends GskelVerticalPanel
+public class DomeStatusPanel extends HorizontalPanel
 {
-	Image domeCamImage = null;
-	long oldImageCounter = -1;
-	Button lampButton = new Button("Off");
-	boolean lampsOn = false;
+	EntryPointApp entryPointApp;
+	
 	Label lstLabel = new Label("");
 	Label localLabel = new Label("");
 	Label gmtLabel = new Label("");
@@ -39,24 +28,10 @@ public class DomeStatusPanel extends GskelVerticalPanel
 	Label decTrackLabel = new Label("");
 	Label filterLabel = new Label("");
 	Label focusLabel = new Label("");
-
-	public DomeStatusPanel(EntryPointApp entryPointApp) 
+	
+	public DomeStatusPanel(EntryPointApp entryPointApp)
 	{
-		super(true, entryPointApp);
-		domeCamImage = new Image("images/domeCamImage.jpg");
-		new DomeCamMqttData(entryPointApp);
-		new LampMqttData(entryPointApp);
-		LampControlEnablePanel lcep = new LampControlEnablePanel(entryPointApp);
-		VerticalPanel lampControl = new VerticalPanel();
-		lampControl.add(lcep);
-		lampButton.setWidth("100%");
-		lampControl.add(lampButton);
-		lampButton.addClickHandler(new LampButtonClickHandler());
-		CaptionPanel lcpCaptionPanel = new CaptionPanel("Lamp Control");
-		lcpCaptionPanel.add(lampControl);
-		VerticalPanel lockAndSettingsPanel = new VerticalPanel();
-		lockAndSettingsPanel.add(lcpCaptionPanel);
-		
+		this.entryPointApp = entryPointApp;
 		Grid timeGrid = new Grid(3,2);
 		timeGrid.setWidget(0, 0, new Label("lst"));
 		timeGrid.setWidget(1, 0, new Label("local"));
@@ -117,21 +92,13 @@ public class DomeStatusPanel extends GskelVerticalPanel
 		CaptionPanel filterCaptionPanel = new CaptionPanel("Filter & Focus");
 		filterCaptionPanel.add(filterGrid);
 
-		HorizontalPanel statusPanel = new HorizontalPanel();
-		statusPanel.add(timeCaptionPanel);
-		statusPanel.add(raDecCaptionPanel);
-		statusPanel.add(altAzCaptionPanel);
-		statusPanel.add(slitCaptionPanel);
-		statusPanel.add(trackCaptionPanel);
-		statusPanel.add(filterCaptionPanel);
-		CaptionPanel statusCaptionPanel = new CaptionPanel("Status");
-		statusCaptionPanel.add(statusPanel);
+		add(timeCaptionPanel);
+		add(raDecCaptionPanel);
+		add(altAzCaptionPanel);
+		add(slitCaptionPanel);
+		add(trackCaptionPanel);
+		add(filterCaptionPanel);
 		
-		HorizontalPanel hp1 = new HorizontalPanel();
-		hp1.add(domeCamImage);
-		hp1.add(lockAndSettingsPanel);
-		add(hp1);
-		add(statusCaptionPanel);
 		new TimeMqttData(entryPointApp);
 		new WhereMqttData(entryPointApp);
 		new SlitMqttData(entryPointApp);
@@ -139,137 +106,7 @@ public class DomeStatusPanel extends GskelVerticalPanel
 		new TrackMqttData(entryPointApp);
 		new FilterMqttData(entryPointApp);
 		new FocusMqttData(entryPointApp);
-	}
-
-	class DomeCamMqttData extends MqttData
-	{
-		public DomeCamMqttData(EntryPointApp entryPointApp) 
-		{
-			super("domeCam/image/date", MqttData.JSONDATA, 2000, entryPointApp);
-		}
-
-		@Override
-		public void doSomethingWithData() 
-		{
-			if (getEntryPointApp().getSetup().isDebug()) return;
-			try
-			{
-				long imageCounter = Long.parseLong(getJsonValue("counter"));
-				domeCamImage.setUrl("images/domeCamImage" + Long.toString(imageCounter - 2) + ".jpg");
-				Image.prefetch("images/domeCamImage" + Long.toString(imageCounter - 1) + ".jpg");
-			}
-			catch (Exception e)
-			{
-				GWT.log(e.getMessage());
-			}
-			
-		}
-	}
-	class LampMqttData extends MqttData
-	{
-		public LampMqttData(EntryPointApp entryPointApp) 
-		{
-			super("tel/done/tx/lamps", MqttData.JSONDATA, 1000, entryPointApp);
-		}
-		@Override
-		public void doSomethingWithData() 
-		{
-			try 
-			{
-				lampsOn = false;
-				if (getJsonValue("one").equals("on")) lampsOn = true;
-				if (!lampButton.isEnabled())
-				{
-					if (lampsOn)
-					{
-						lampButton.setStyleName("lampButtonOnNotEnabled");
-						lampButton.setText("On");
-					}
-					else
-					{
-						lampButton.setStyleName("lampButtonOffNotEnabled");
-						lampButton.setText("Off");
-					}
-				}
-				
-			} catch (Exception e) {GWT.log(e.getMessage());}
-		}
-	}
-	class LampControlEnablePanel extends GskelSettingButtonGrid
-	{
-		EntryPointApp entryPointApp;
-		public LampControlEnablePanel(EntryPointApp entryPointApp) 
-		{
-			super(entryPointApp.getSetup().isSettingsPermitted());
-			this.entryPointApp = entryPointApp;
-		}
-		@Override
-		public void enableSettingsInput(boolean enabled) 
-		{
-			lampButton.setEnabled(enabled);
-			if (!enabled)
-			{
-				if (lampsOn)
-				{
-					lampButton.setStyleName("lampButtonOnNotEnabled");
-				}
-				else
-				{
-					lampButton.setStyleName("lampButtonOffNotEnabled");
-				}
-			}
-			else
-			{
-				if (lampsOn)
-				{
-					lampButton.setStyleName("lampButtonOnEnabled");
-				}
-				else
-				{
-					lampButton.setStyleName("lampButtonOffEnabled");
-				}
-			}
-		}
-		@Override
-		public void doSettings() 
-		{
-			String[][] jsonArray = {{"all","on"},{"debug", "false"}};
-			if (lampButton.getText().equals("Off"))
-			{
-				jsonArray[0][1] = "off";
-			}
-			else
-			{
-				jsonArray[0][1] = "on";
-			}
-			if (entryPointApp.getSetup().isDebug()) jsonArray[1][1] = "true";;
-			entryPointApp.getSetup().getMqttService().publishJsonArray("tel/set/tx/lamps", jsonArray, entryPointApp.getSetup().isSettingsPermitted(), new LampSettingsCallback());
-		}
-	}
-	class LampButtonClickHandler implements ClickHandler
-	{
-		@Override
-		public void onClick(ClickEvent event) 
-		{
-			if (lampButton.getText().equals("Off"))
-			{
-				lampButton.setText("On");
-				lampButton.setStyleName("lampButtonOnEnabled");
-			}
-			else
-			{
-				lampButton.setText("Off");
-				lampButton.setStyleName("lampButtonOffEnabled");
-			}
-		}
 		
-	}
-	class LampSettingsCallback implements AsyncCallback<String>
-	{
-		@Override
-		public void onFailure(Throwable caught) {}
-		@Override
-		public void onSuccess(String result) {}
 	}
 	class TimeMqttData extends MqttData
 	{
@@ -393,5 +230,4 @@ public class DomeStatusPanel extends GskelVerticalPanel
 			
 		}
 	}
-
 }
