@@ -32,10 +32,11 @@ import se.esss.litterbox.utilities.WaitFrame;
 public class StoneEdgeTunnel  extends JFrame 
 {
 	private static final long serialVersionUID = 8463893137035729060L;
-	protected String version = "v2.1";
-	protected String versionDate = "February 20, 2014";
-    String host = "mail.stoneedgevineyard.com";
-    String user = "remote";
+	protected String version = "v2.3";
+	protected String versionDate = "September 8, 2017";
+    //String host = "telescope.stoneedgeobservatory.com";
+    String host = "stoneedgelocal.com";
+	String user = "remote";
     String imageDirName = "/home/remote/tomcat/webapps/StoneEdgeImageData";
     Session session;
     boolean tunnelConnected = false;

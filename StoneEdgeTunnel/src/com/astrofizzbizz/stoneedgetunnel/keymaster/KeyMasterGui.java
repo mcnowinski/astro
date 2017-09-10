@@ -63,10 +63,11 @@ public class KeyMasterGui extends JFrame
 	protected StatusPanel statusBar;
 	ClassLoader loader;
 
-	protected String version = "v2.0";
-	protected String versionDate = "November 18, 2015";
+	protected String version = "v2.3";
+	protected String versionDate = "September 8, 2017";
 
-    String host = "mail.stoneedgevineyard.com";
+    //String host = "telescope.stoneedgeobservatory.com";
+    String host = "stoneedgelocal.com";
     String user = "remote";
     Session session;
     boolean tunnelConnected = false;

@@ -1,0 +1,16 @@
+@FinalFields, false
+com.astrofizzbizz.stoneedge3.client.StoneEdge3Service, false, false, false, false, _, 4127648215
+com.astrofizzbizz.stoneedge3.shared.ImagingReturnInfo, true, true, false, false, com.astrofizzbizz.stoneedge3.shared.ImagingReturnInfo/2565363204, 2565363204
+com.astrofizzbizz.stoneedge3.shared.ImagingSendInfo, true, true, true, true, com.astrofizzbizz.stoneedge3.shared.ImagingSendInfo/3519539355, 3519539355
+com.astrofizzbizz.stoneedge3.shared.ObsCommandException, true, true, false, false, com.astrofizzbizz.stoneedge3.shared.ObsCommandException/1132815709, 1132815709
+com.astrofizzbizz.stoneedge3.shared.ObsCommandReturnInfo, true, true, false, false, com.astrofizzbizz.stoneedge3.shared.ObsCommandReturnInfo/2568061002, 2568061002
+com.astrofizzbizz.stoneedge3.shared.SimbadReturnInfo, true, true, false, false, com.astrofizzbizz.stoneedge3.shared.SimbadReturnInfo/2597912602, 2597912602
+com.astrofizzbizz.stoneedge3.shared.StoneEdge3Exception, true, true, false, false, com.astrofizzbizz.stoneedge3.shared.StoneEdge3Exception/1942875326, 1942875326
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+com.google.gwt.user.client.rpc.RpcTokenException, true, true, false, false, com.google.gwt.user.client.rpc.RpcTokenException/2345075298, 2345075298
+com.google.gwt.user.client.rpc.XsrfToken, false, false, true, true, com.google.gwt.user.client.rpc.XsrfToken/4254043109, 4254043109
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+[Ljava.lang.String;, true, true, true, true, [Ljava.lang.String;/2600011424, 2600011424
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
